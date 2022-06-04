@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 @RestController
 public class ExcelController {
@@ -43,6 +44,14 @@ public class ExcelController {
     }
 
     /**
+     * 导出Excel(mongo)
+     */
+    @GetMapping("/exportAreaFromMongo")
+    public void exportAreaFromMongo(HttpServletResponse response) throws IOException {
+        areaService.exportExcelFromMongo(response);
+    }
+
+    /**
      * 获取数据列表
      */
     @PostMapping ("/getAreaList")
@@ -51,6 +60,16 @@ public class ExcelController {
         Page<Area> page = new Page<>(pageNumber, size);
         Page areaList = areaService.getAreaList(page);
         return Result.success(areaList);
+    }
+
+    /**
+     * 获取数据列表(mongo)
+     */
+    @PostMapping ("/getAreaListFromMongo")
+    public Result getAreaListFromMongo(@RequestParam(required = true, defaultValue = "1") Integer pageNumber,
+                              @RequestParam(required = true, defaultValue = "1") Integer size) {
+        Map<String, Object> areaPageFromMongo = areaService.getAreaPageFromMongo(pageNumber, size);
+        return Result.success(areaPageFromMongo);
     }
 
 

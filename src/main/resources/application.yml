@@ -15,6 +15,11 @@ spring:
     username: mf
     password: 123456
 
+  # mongodb
+  data:
+    mongodb:
+      uri: mongodb://43.142.108.27:27017/weather
+
 
 mybatis-plus:
   # xml扫描

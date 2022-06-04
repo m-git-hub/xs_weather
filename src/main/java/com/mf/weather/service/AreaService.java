@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * 地区接口
@@ -27,7 +28,25 @@ public interface AreaService extends IService<Area> {
      */
     void exportExcel(HttpServletResponse response) throws IOException;
 
+    void exportExcelFromMongo(HttpServletResponse response) throws IOException;
+
 
     Page getAreaList(Page page);
+
+
+    /**
+     * mongo
+     * 批量添加文档数据
+     */
+    void insertBatch();
+
+    /**
+     * mogo
+     * 分页获取数据
+     * @param page
+     * @param size
+     * @return
+     */
+    Map<String, Object> getAreaPageFromMongo(int page, int size);
 
 }
