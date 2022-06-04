@@ -1,0 +1,26 @@
+server:
+  port: 8989
+
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://43.142.108.27:3306/weather?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT&allowPublicKeyRetrieval=true&allowMultiQueries=true
+    username: mf
+    password: 123456
+
+
+mybatis-plus:
+  # xml扫描
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.mf.weather.entity
+logging:
+  level:
+    com.mf.weather.dao: trace
+

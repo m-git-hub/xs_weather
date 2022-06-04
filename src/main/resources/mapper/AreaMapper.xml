@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mf.weather.dao.AreaMapper">
+
+    <update id="updateBatch" parameterType="java.util.List" >
+        <foreach collection="list" item="item" index="index" separator=";">
+            UPDATE t_area
+            <set>
+                <if test="item.areaCode != null" >
+                    area_code = #{item.areaCode},
+                </if>
+                <if test="item.areaName != null and item.areaName != ''" >
+                    area_name = #{item.areaName},
+                </if>
+                <if test="item.areaWeather != null and item.areaWeather != ''" >
+                    area_weather = #{item.areaWeather},
+                </if>
+            </set>
+            where id = #{item.id}
+        </foreach>
+    </update>
+
+
+</mapper>
