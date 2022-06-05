@@ -2,10 +2,10 @@ package com.mf.weather.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.mf.weather.Vo.Result;
 import com.mf.weather.entity.Area;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
@@ -29,6 +29,12 @@ public interface AreaService extends IService<Area> {
     void exportExcel(HttpServletResponse response) throws IOException;
 
     void exportExcelFromMongo(HttpServletResponse response) throws IOException;
+
+    void exportExcelFromMongoSheet(HttpServletResponse response) throws IOException;
+
+    void exportExceltest(HttpServletResponse response, HttpServletRequest request) throws IOException;
+
+
 
 
     Page getAreaList(Page page);

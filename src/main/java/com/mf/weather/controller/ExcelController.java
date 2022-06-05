@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
@@ -51,6 +52,25 @@ public class ExcelController {
         areaService.exportExcelFromMongo(response);
     }
 
+
+    /**
+     * 导出Excel(mongo)
+     */
+    @GetMapping("/exportExcelFromMongoSheet")
+    public void exportExcelFromMongoSheet(HttpServletResponse response) throws IOException {
+        areaService.exportExcelFromMongoSheet(response);
+    }
+
+
+    /**
+     * 导出Exceltest(mongo)
+     */
+    @GetMapping("/exceltest")
+    public void exceltest(HttpServletResponse response, HttpServletRequest request) throws IOException {
+        areaService.exportExceltest(response,request);
+    }
+
+
     /**
      * 获取数据列表
      */
@@ -71,6 +91,7 @@ public class ExcelController {
         Map<String, Object> areaPageFromMongo = areaService.getAreaPageFromMongo(pageNumber, size);
         return Result.success(areaPageFromMongo);
     }
+
 
 
 }
